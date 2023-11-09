@@ -49,6 +49,7 @@ export const ItemList = () => {
     `${baseURL}api/v1/categories`,
     ""
   );
+  console.log(categories)
 
   const [tableData, setTableData] = useState([]);
   useEffect(() => {

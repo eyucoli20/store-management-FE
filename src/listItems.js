@@ -69,7 +69,9 @@ function ListItems() {
     }
   }, [role]);
 
-  const handleClick = (event, index) => {
+  const handleClick = async (event, index) => {
+
+    event.preventDefault();
     setSelectedIndex(index);
   };
 

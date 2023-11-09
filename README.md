@@ -27,7 +27,7 @@ This repository contains the frontend codebase for the Store Management applicat
 ## Local Development:
 
 - Navigate to your project directory in the terminal.
-- Run npm install to install dependencies.
+- Run npm install to install dependencies. USE NODE VERSION 14.21.3
 - Start the development server with npm start.
 - Access the app at http://localhost:3000.
 
@@ -89,6 +89,14 @@ docker-compose build
 Once the containers are up and running, you can access the Store Management app by opening your web browser and visiting http://localhost:3000.
 
 ## For Login use defualt admin
-
+- For ADMIN
 - userName: john
+- password: 123456
+
+-For staff manager
+- userName: manager
+- password: 123456
+
+-For staff 
+- userName: staff
 - password: 123456

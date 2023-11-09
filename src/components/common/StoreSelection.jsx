@@ -149,7 +149,7 @@ export default function StoreSelection({ onSelectedIdChange }) {
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}
       options={options?.map(option => option.label)}
-      value={options?.find(option => option.storeId === selectedId)?.label || null} // Set the value by finding the label from ID
+      value={options?.find(option => option.id === selectedId)?.label || null} // Set the value by finding the label from ID
       onChange={handleSelectChange}
       // groupBy={(option) => option[0].toUpperCase()}
       renderInput={(params) => <TextField {...params} label="store" />}

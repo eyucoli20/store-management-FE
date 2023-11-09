@@ -53,6 +53,7 @@ export default function SignIn() {
   } = useMutation(loginUser, {
     onSuccess: (data) => {
       const decodedToken = jwt.decode(data?.access_token);
+      console.log(decodedToken)
       const decodedUser = {
         usename: decodedToken.sub,
         role: decodedToken?.role[0],

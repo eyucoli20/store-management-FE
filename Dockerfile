@@ -1,6 +1,6 @@
 FROM node:17-alpine
 
-WORKDIR /store-management
+WORKDIR /store-management-FE
 
 COPY package.json .
 

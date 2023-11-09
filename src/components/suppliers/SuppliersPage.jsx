@@ -11,42 +11,9 @@ import useGet from "../../services/useGet";
 import EditModal from "../common/EditModal";
 
 export const SuppliersPage = () => {
-  // const [data, setData] = useState([]);
-  // const [isError, setIsError] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isRefetching, setIsRefetching] = useState(false);
-  // const [columnFilters, setColumnFilters] = useState([]);
-  // const [globalFilter, setGlobalFilter] = useState('');
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (!data) {
-  //       setIsLoading(true);
-  //     } else {
-  //       setIsRefetching(true);
-  //     }
-
-  //     const url = new URL(`${baseURL}api/v1/suppliers/search`);
-  //     url.searchParams.set('query', JSON.stringify(columnFilters ?? []));
-  //     url.searchParams.set('query', globalFilter ?? '');
-  //     try {
-  //       const response = await fetch(url.href);
-  //       const json = await response.json();
-
-  //       setData(json || []);
-  //     } catch (error) {
-  //       setIsError(true);
-  //       console.error(error);
-  //       return;
-  //     }
-  //     setIsError(false);
-  //     setIsLoading(false);
-  //     setIsRefetching(false);
-  //   };
-
-  //   fetchData();
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [columnFilters, globalFilter]);
+  const jsonUser = JSON.parse(localStorage.getItem("user"));
+  const token = jsonUser?.access_token;
+ 
   const {data:categories, isLoading:isLoadingCategories } = useGet(`${baseURL}api/v1/categories`,"");
   const {data:suppliers, isLoading:isLoadingSuppliers } = useGet(`${baseURL}api/v1/suppliers`,"");
 
@@ -112,7 +79,8 @@ export const SuppliersPage = () => {
       const updatedData = await makeApiRequest(
         `${baseURL}api/v1/suppliers/${values.id}`,
         "PUT",
-        values
+        values,
+        token
       );
 
       if (updatedData) {
@@ -175,7 +143,7 @@ export const SuppliersPage = () => {
         columns={columns}
         state={{ isLoading: isLoading }}
         editingMode="modal" //default
-        enableEditing={true ? true : false}
+        enableEditing
         onEditingRowSave={handleSaveRow}
         enableRowActions
         data={tableData || []}
